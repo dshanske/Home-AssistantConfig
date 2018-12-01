@@ -1,0 +1,11 @@
+ds_status_dropdown:
+  name: David Shanske
+  options:
+    - Home
+    - Just Arrived
+    - Just Left
+    - At Work
+    - Just Left Work
+    - Away
+    - Extended Away
+  initial: Home

@@ -1,0 +1,11 @@
+views:
+  - id: 0  # Automatically created id
+    title: main
+    icon: mdi:home-outline
+    cards:
+      - id: 345520ce98e749748e141f61082991a6  # Automatically created id
+        type: weather-forecast
+        entity: weather.home_weather
+
+
+

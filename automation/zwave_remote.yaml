@@ -1,0 +1,64 @@
+- alias: Toggle Living Room Fan Light
+  initial_state: True
+  trigger:
+    platform: event
+    event_type: zwave.scene_activated
+    event_data:
+      entity_id: zwave.hkzw_scn01
+      scene_id: 1
+      scene_data: 0
+  action:
+    - service: light.toggle
+      entity_id: light.living_room_fan_light
+
+- alias: Toggle Living Room High Hat
+  initial_state: True
+  trigger:
+    platform: event
+    event_type: zwave.scene_activated
+    event_data:
+      entity_id: zwave.hkzw_scn01
+      scene_id: 1
+      scene_data: 2
+  action:
+    - service: light.toggle
+      entity_id: light.living_room_high_hats
+
+- alias: Toggle Bedroom Mini Tracklight
+  initial_state: True
+  trigger:
+    platform: event
+    event_type: zwave.scene_activated
+    event_data:
+      entity_id: zwave.hkzw_scn041
+      scene_id: 2
+      scene_data: 0
+  action:
+    - service: light.toggle
+      entity_id:  light.bedroom_mini_tracklight
+
+- alias: Toggle Bedroom Tracklight
+  initial_state: True
+  trigger:
+    platform: event
+    event_type: zwave.scene_activated
+    event_data:
+      entity_id: zwave.hkzw_scn041
+      scene_id: 4
+      scene_data: 0
+  action:
+    - service: light.toggle
+      entity_id:  light.bedroom_tracklight
+
+- alias: Toggle Bedroom Spotlight
+  initial_state: True
+  trigger:
+    platform: event
+    event_type: zwave.scene_activated
+    event_data:
+      entity_id: zwave.hkzw_scn041
+      scene_id: 3
+      scene_data: 0
+  action:
+    - service: light.toggle
+      entity_id:  light.bedroom_spot_lights

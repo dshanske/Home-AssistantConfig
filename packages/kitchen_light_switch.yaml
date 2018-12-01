@@ -1,0 +1,38 @@
+light:
+  - platform: mqtt
+    name: "Kitchen Light"
+    state_topic: "stat/lswitch1/RESULT"
+    value_template: '{{ value_json["POWER"] }}'
+    command_topic: "cmnd/lswitch1/POWER"
+    availability_topic: "tele/lswitch1/LWT"
+    qos: 1
+    payload_on: "ON"
+    payload_off: "OFF"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+    retain: false
+sensor:
+  - platform: mqtt
+    name: "Kitchen Light Switch State"
+    state_topic: "cmnd/lswitch1-1/POWER"
+    qos: 1
+    expire_after: "1"
+automation:
+  - alias:  Kitchen Light Double Tap
+    trigger:
+     - platform: state
+       entity_id: sensor.kitchen_light_switch_state
+       to: 'TOGGLE'
+    action:
+      service: light.toggle
+      data:
+        entity_id: light.living_room_fan_light
+  - alias: Kitchen Light Hold
+    trigger:
+      - platform: state
+        entity_id: sensor.kitchen_light_switch_state
+        to: 'HOLD'
+    action:
+      service: light.toggle
+      data:
+        entity_id: light.living_room_high_hats

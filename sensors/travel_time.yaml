@@ -1,0 +1,27 @@
+- platform: waze_travel_time
+  origin: !secret home_address
+  destination: !secret work_address
+  name: Home to Work
+  region: 'US'
+  scan_interval: 300
+
+- platform: waze_travel_time
+  origin: !secret work_address
+  destination: !secret home_address
+  name: Work to Home
+  region: 'US'
+  scan_interval: 300
+
+- platform: waze_travel_time
+  origin: !secret home_address
+  destination: !secret upstate_address
+  name: Home to Upstate
+  region: 'US'
+  scan_interval: 300
+
+- platform: waze_travel_time
+  origin: !secret upstate_address
+  destination: !secret home_address
+  region: 'US'
+  name: Upstate to Home
+  scan_interval: 300

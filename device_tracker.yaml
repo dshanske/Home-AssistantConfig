@@ -1,0 +1,20 @@
+- platform: automatic
+  client_id: !secret automatic_client_id
+  secret: !secret automatic_secret
+- platform: unifi
+  host: 127.0.0.1
+  port: 8443
+  verify_ssl: false
+  username: dshanske
+  password: !secret unifi_password
+  monitored_conditions:
+    - hostname
+    - ip
+    - uptime
+- platform: tile
+  username: !secret tile_username
+  password: !secret tile_password
+- platform: google_home
+  host: 10.1.1.149
+- platform: google_home
+  host: 10.1.1.123

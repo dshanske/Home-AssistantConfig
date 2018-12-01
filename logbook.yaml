@@ -1,0 +1,16 @@
+exclude:
+  entities:
+    - sensor.ha_uptime
+    - sensor.time
+    - sun.sun
+    - sensor.last_boot
+    - sensor.date__time
+    - sensor.pws_alerts
+    - automation.rtl433_living_room_convert
+    - automation.rtl433_bedroom_convert 
+    - automation.rtl433_kitchen_convert 
+    - automation.rtl433_home_weather_convert
+    - automation.rtl433_home49_weather_convert
+    - automation.rtl433_upstate_weather_convert
+    - automation.rtl433_upstate_weather49_convert
+    - automation.rtl433_upstate_weather56_convert

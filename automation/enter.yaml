@@ -1,0 +1,63 @@
+- alias: Enter through garage
+  trigger:
+  - platform: state
+    entity_id: cover.5629 
+    from: 'closed'
+    to: 'open'
+  action:
+  - wait_template: "{{ states.binary_sensor.ground_floor_door_sensor_opened.state == 'on'  }}"
+    timeout: 00:2:00
+  - condition: state
+    entity_id: binary_sensor.ground_floor_door_sensor_opened
+    state: 'on'
+  - service: notify.pushover
+    data_template:
+      message: "Someone entered the Ground Floor Through the Garage" 
+
+- alias: Exit through garage
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.ground_floor_door_sensor_opened 
+    from: 'off'
+    to: 'on'
+  action:
+  - wait_template: "{{ states.cover.5629.state == 'open'  }}"
+    timeout: 00:2:00
+  - condition: state
+    entity_id: cover.5629
+    state: 'on'
+  - service: notify.pushover
+    data_template:
+      message: "Someone exited the Ground Floor Through the Garage" 
+
+- alias: Enter through front door
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.front_door_sensor_opened
+    from: 'off'
+    to: 'on'
+  action:
+  - wait_template: "{{ states.binary_sensor.ground_floor_door_sensor_opened.state == 'on'  }}"
+    timeout: 00:2:00
+  - condition: state
+    entity_id: binary_sensor.ground_floor_door_sensor_opened
+    state: 'on'
+  - service: notify.pushover
+    data_template:
+      message: "Someone entered the Ground Floor Through the Front Door" 
+
+- alias: Exit through front door
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.ground_floor_door_sensor_opened 
+    from: 'off'
+    to: 'on'
+  action:
+  - wait_template: "{{ states.binary_sensor.front_door_sensor_opened.state == 'on'  }}"
+    timeout: 00:2:00
+  - condition: state
+    entity_id: binary_sensor.front_door_sensor_opened
+    state: 'on'
+  - service: notify.pushover
+    data_template:
+      message: "Someone exited the Ground Floor Through the Front Door" 

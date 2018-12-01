@@ -1,0 +1,14 @@
+- platform: onkyo
+  host: 10.1.1.249
+  name: Onkyo NR-656
+  sources:
+    video2: 'MythTV'
+    strm-box: 'Roku'
+    bluetooth: 'Bluetooth'
+    network_net: 'Net'
+- platform: mythfrontend
+  host: 10.1.1.250
+- platform: alexa
+  email: !secret amazon_email
+  password: !secret amazon_password
+  url: "amazon.com"

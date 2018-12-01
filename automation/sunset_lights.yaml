@@ -1,0 +1,20 @@
+- alias: Sunset Lights
+  trigger:
+    platform: sun
+    event: sunset
+    offset: "-00:45:00"
+  action:
+    service: homeassistant.turn_on
+    entity_id: 
+      - light.upstairs_living_room_light
+      - light.next_door_light
+- alias: Sunrise Rise
+  trigger:
+    platform: sun
+    event: sunrise
+    offset: "-00:45:00"
+  action:
+    service: homeassistant.turn_off
+    entity_id: 
+      - light.upstairs_living_room_light
+      - light.next_door_light

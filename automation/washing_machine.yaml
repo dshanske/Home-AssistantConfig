@@ -1,0 +1,27 @@
+- alias: Notify Washing Machine
+  trigger:
+    platform: state
+    entity_id: binary_sensor.washing_machine
+    from: 'on'
+    to: 'off'
+  action:
+    - service: notify.pushover
+      data:
+        message: "Washing Machine is Off"
+    - service: tts.google_say
+      data:
+        message: 'Washing Machine is Off'
+    - service: tts.google_say
+      entity_id: media_player.ground_floor_bedroom
+      data:
+        message: "Washing Machine is Off."
+    - service: tts.google_say
+      entity_id: media_player.upstate
+      data:
+        message: "Washing Machine is Off."
+    - service: tts.google_say
+      entity_id: media_player.living_room
+      data:
+        message: "Washing Machine is Off."
+
+

@@ -1,0 +1,8 @@
+kitchen:
+  name: Kitchen
+  view: yes
+  entities:
+    - light.kitchen_light
+    - sensor.kitchen_temp
+    - sensor.kitchen_motion_sensor_temperature
+    - sensor.kitchen_humidity

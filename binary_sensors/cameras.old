@@ -1,0 +1,3 @@
+- platform: ffmpeg_motion
+  input: rtsp://10.1.1.197:554/unicast
+  name: Hallway Camera

@@ -1,0 +1,17 @@
+- alias: rtl433_upstate_weather_convert
+  trigger:
+    - platform: mqtt
+      topic: sensors/rtl_433
+  condition:
+    condition: template
+    value_template: >
+      {% if trigger.payload_json.sensor_id %}
+        {{ trigger.payload_json.sensor_id == 2695 and trigger.payload_json.message_type == 56 }}
+      {% else %}
+        false
+      {% endif %}
+  action:
+    - service: mqtt.publish 
+      data_template:
+        topic: rtl433/upstate_weather
+        payload: '{ "temperature_F" : {{ trigger.payload_json.temperature_F }}, "humidity" : {{ trigger.payload_json.humidity }}, "model" : "{{ trigger.payload_json.model }}", "battery" : "{{ trigger.payload_json.battery }}" }'

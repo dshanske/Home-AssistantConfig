@@ -1,0 +1,50 @@
+- alias: Bottom Button Hallway Controller
+  initial_state: True
+  trigger:
+    platform: event
+    event_type: zwave.scene_activated
+    event_data:
+      entity_id: zwave.gocontrol_wall_switch
+      scene_id: 2
+      scene_data: 0
+  action:
+    - service: light.toggle
+      entity_id: light.hallway_light
+
+- alias: Bottom Button Hallway Controller Hold
+  initial_state: True
+  trigger:
+    platform: event
+    event_type: zwave.scene_activated
+    event_data:
+      entity_id: zwave.gocontrol_wall_switch
+      scene_id: 2
+      scene_data: 2
+  action:
+    - service: light.toggle
+      entity_id: light.hallway_light
+- alias: Top Button Hallway Controller
+  initial_state: True
+  trigger:
+    platform: event
+    event_type: zwave.scene_activated
+    event_data:
+      entity_id: zwave.gocontrol_wall_switch
+      scene_id: 1
+      scene_data: 0
+  action:
+    - service: light.toggle
+      entity_id: light.hallway_light
+- alias: Top Button Hallway Controller Hold
+  initial_state: True
+  trigger:
+    platform: event
+    event_type: zwave.scene_activated
+    event_data:
+      entity_id: zwave.gocontrol_wall_switch
+      scene_id: 1
+      scene_data: 2
+  action:
+    - service: light.toggle
+      entity_id: light.hallway_light
+

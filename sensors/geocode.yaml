@@ -1,0 +1,15 @@
+- platform: openstreetmap_geocode
+  name: David Shanske
+  origin: device_tracker.moto_x4
+  options: place
+  display_zone: show
+  gravatar: !secret me-email-address
+  scan_interval: 180
+
+- platform: openstreetmap_geocode
+  name: Ruth Shanske
+  origin: device_tracker.moto_rs
+  options: place
+  display_zone: show
+  gravatar: !secret rs-email-address
+  scan:interval: 180

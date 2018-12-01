@@ -1,0 +1,28 @@
+- platform: mqtt
+  state_topic: "weewx/loop"
+  name: 'Home Weather'
+  value_template: '{{ value_json.outTemp_F }}'
+  unit_of_measurement: '°F'
+  json_attributes:
+    - barometer_inHg
+    - outHumidity
+    - windGust_mph
+    - dewpoint_F
+    - rain_in
+    - cloudbase_foot
+    - heatindex_F
+    - altimeter_inHg"
+    - dayRain_in
+    - windrun_mile
+    - outTemp_F
+    - appTemp_F
+    - rain_total
+    - windchill_F
+    - hourRain_in
+    - humidex_F
+    - rainRate_inch_per_hour
+    - pressure_inHg
+    - inTemp_F
+    - windSpeed_mph
+    - rain24_in
+    - windDir

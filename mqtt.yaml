@@ -1,0 +1,6 @@
+broker: 10.1.1.145
+discovery: true
+client_id: bayside_hass
+username: !secret mqtt_username
+password: !secret mqtt_password
+port: 1883

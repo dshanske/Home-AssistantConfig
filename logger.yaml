@@ -1,0 +1,15 @@
+default: info
+logs:
+  homeassistant.core: error
+  homeassistant.components.automation: warn
+  homeassistant.components.mqtt: warn
+  homeassistant.components.device_tracker: warn
+  homeassistant.components.discovery: warn
+  homeassistant.components.http: warn
+  homeassistant.components.http.ban: warning
+  homeassistant.components.media_player: warn
+  homeassistant.components.recorder: error
+  homeassistant.components.zwave: warn
+  homeassistant.helpers.script: warn
+  py.warnings: error
+  root: warn

@@ -1,0 +1,32 @@
+- alias: 'Kitchen Light Off'
+  trigger:
+    - platform: state
+      entity_id: light.kitchen_light
+      from: 'on'
+      to: 'off'
+  action:
+    - service: switch.turn_on
+      entity_id:
+       - switch.kitchen_counter_light
+    - service: light.turn_on
+      entity_id:
+       - light.kitchen_bar_light
+    - service: light.turn_off
+      entity_id:
+       - light.kitchen_door_light
+- alias: 'Kitchen Light On'
+  trigger:
+    - platform: state
+      entity_id: light.kitchen_light
+      from: 'off'
+      to: 'on'
+  action:
+    - service: switch.turn_off
+      entity_id:
+       - switch.kitchen_counter_light
+    - service: light.turn_off
+      entity_id:
+       - light.kitchen_bar_light
+    - service: light.turn_on
+      entity_id: 
+       - light.kitchen_door_light

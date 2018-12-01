@@ -1,0 +1,11 @@
+- platform: jewish_calendar
+  name: Home Jewish
+  language: english
+  disapora: true
+  latitude: !secret home_latitude 
+  longitude: !secret home_longitude
+  sensors:
+    - date
+    - weekly_portion
+    - holiday_name
+    - holyness

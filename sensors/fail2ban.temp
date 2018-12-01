@@ -1,0 +1,6 @@
+- platform: fail2ban
+  jails:
+    - sshd
+    - hass-iptables
+  file_path: /var/log/fail2ban.log
+  scan_interval: 120

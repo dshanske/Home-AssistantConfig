@@ -1,0 +1,94 @@
+- alias: Mark David as just arrived
+  trigger:
+    - platform: zone
+      entity_id: device_tracker.moto_x4
+      zone: zone.home
+      event: enter
+  action:
+    - service: input_select.select_option
+      data:
+        entity_id: input_select.ds_status_dropdown
+        option: Just Arrived
+
+- alias: Mark David as at Work
+  trigger:
+    - platform: zone
+      entity_id: device_tracker.moto_x4
+      zone: zone.work
+      event: enter
+  action:
+    - service: input_select.select_option
+      data:
+        entity_id: input_select.ds_status_dropdown
+        option: At Work
+
+- alias: Mark David as home
+  trigger:
+    - platform: state
+      entity_id: input_select.ds_status_dropdown
+      to: 'Just Arrived'
+      for:
+        minutes: 10
+  condition:
+  action:
+    - service: input_select.select_option
+      data:
+        entity_id: input_select.ds_status_dropdown
+        option: Home
+ 
+- alias: Mark David as just left
+  trigger:
+    - platform: zone
+      entity_id: device_tracker.moto_x4
+      zone: zone.home
+      event: leave
+  action:
+    - service: input_select.select_option
+      data:
+        entity_id: input_select.ds_status_dropdown
+        option: Just Left
+
+- alias: Mark David as just left work
+  trigger:
+    - platform: zone
+      entity_id: device_tracker.moto_x4
+      zone: zone.work
+      event: leave
+  action:
+    - service: input_select.select_option
+      data:
+        entity_id: input_select.ds_status_dropdown
+        option: Just Left Work
+
+
+ 
+- alias: Mark David as away
+  trigger:
+    - platform: state
+      entity_id: input_select.ds_status_dropdown
+      to: 'Just Left'
+      for:
+        minutes: 10
+    - platform: state
+      entity_id: input_select.ds_status_dropdown
+      to: 'Just Left Work'
+      for:
+        minutes: 10
+  action:
+    - service: input_select.select_option
+      data:
+        entity_id: input_select.ds_status_dropdown
+        option: Away
+
+- alias: Mark David as extended away
+  trigger:
+    - platform: state
+      entity_id: input_select.ds_status_dropdown
+      to: 'Away'
+      for:
+        hours: 24
+  action:
+    - service: input_select.select_option
+      data_template:
+        entity_id: input_select.ds_status_dropdown
+        option: Extended Away

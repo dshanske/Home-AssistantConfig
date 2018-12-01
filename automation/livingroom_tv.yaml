@@ -1,0 +1,33 @@
+- alias: 'Living Room TV On'
+  trigger:
+    - platform: state
+      entity_id: sensor.living_room_harmony
+      from: 'PowerOff'
+  condition:
+    - condition: state
+      entity_id: 'light.living_room_right'
+      state: 'on'
+  action:
+    - service: light.turn_on
+      entity_id:
+       -  light.living_room_ambient_light 
+    - service: light.turn_off
+      entity_id:
+       - light.living_room_right
+
+- alias: 'Living Room TV Off'
+  trigger:
+    - platform: state
+      entity_id: sensor.living_room_harmony
+      to: 'PowerOff'
+  condition:
+    - condition: state
+      entity_id: 'light.living_room_left'
+      state: 'on'
+  action:
+    - service: light.turn_off
+      entity_id:
+       - light.living_room_ambient_light 
+    - service: light.turn_on
+      entity_id:
+       - light.living_room_right

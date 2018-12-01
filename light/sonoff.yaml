@@ -1,0 +1,51 @@
+- platform: mqtt
+  name: "Kitchen Bar Light"
+  state_topic: "stat/sonoff5/RESULT"
+  value_template: '{{ value_json["POWER1"] }}'
+  command_topic: "cmnd/sonoff5/POWER"
+  availability_topic: "tele/sonoff5/LWT"
+  qos: 1
+  payload_on: "ON"
+  payload_off: "OFF"
+  payload_available: "Online"
+  payload_not_available: "Offline"
+  retain: false
+
+- platform: mqtt
+  name: "Bedroom Underbesta Light"
+  state_topic: "stat/sonoff4/RESULT"
+  value_template: '{{ value_json["POWER1"] }}'
+  command_topic: "cmnd/sonoff4/POWER"
+  availability_topic: "tele/sonoff4/LWT"
+  qos: 1
+  payload_on: "ON"
+  payload_off: "OFF"
+  payload_available: "Online"
+  payload_not_available: "Offline"
+  retain: false
+
+- platform: mqtt
+  name: "Upstairs Living Room Light"
+  state_topic: "stat/sonoff7/RESULT"
+  value_template: '{{ value_json["POWER1"] }}'
+  command_topic: "cmnd/sonoff7/POWER"
+  availability_topic: "tele/sonoff7/LWT"
+  qos: 1
+  payload_on: "ON"
+  payload_off: "OFF"
+  payload_available: "Online"
+  payload_not_available: "Offline"
+  retain: false
+
+- platform: mqtt
+  name: "Next Door Light"
+  state_topic: "stat/sonoff8/RESULT"
+  value_template: '{{ value_json["POWER1"] }}'
+  command_topic: "cmnd/sonoff8/POWER"
+  availability_topic: "tele/sonoff8/LWT"
+  qos: 1
+  payload_on: "ON"
+  payload_off: "OFF"
+  payload_available: "Online"
+  payload_not_available: "Offline"
+  retain: false

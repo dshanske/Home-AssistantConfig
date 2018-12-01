@@ -1,0 +1,32 @@
+google_assistant:
+  project_id: home-control-219201
+  api_key: !secret google_api_key
+  exposed_domains:
+    - switch
+    - light
+    - climate
+    - fan
+    - cover
+  entity_config:
+     light.6001948c57cb_1011185:
+       expose: false
+     light.bedroom_underbesta_light:
+       expose: false
+     switch.living_room_air_conditioner:
+       expose: false
+     switch.living_room_air_conditioner_fan_speed:
+       expose: false
+     switch.living_room_air_conditioner_mode:
+       expose: false
+     switch.living_room_air_conditioner_down:
+       expose: false
+     switch.living_room_air_conditioner_up:
+       expose: false
+     switch.living_room_camera:
+       expose: false
+     switch.vision_zl7261_plugin_power_monitor_switch:
+       expose: false
+     switch.kitchen_counter_light:
+       expose: false
+     light.kitchen_bar_light:
+       expose: false

@@ -1,0 +1,40 @@
+- platform: mqtt
+  state_topic: "rtl433/upstate_weather"
+  name: 'Upstate Outside Temperature'
+  unit_of_measurement: '°F'
+  value_template: '{{ value_json.temperature_F }}'
+- platform: mqtt
+  state_topic: "rtl433/upstate_weather"
+  name: 'Upstate Outside Humidity'
+  unit_of_measurement: '%'
+  value_template: '{{ value_json.humidity }}'
+- platform: mqtt
+  state_topic: "rtl433/upstate_living_room"
+  name: 'Upstate Living Room Temperature'
+  unit_of_measurement: '°F'
+  value_template: '{{ value_json.temperature_F }}'
+- platform: mqtt
+  state_topic: "rtl433/upstate_living_room"
+  name: 'Upstate Living Room Humidity'
+  unit_of_measurement: '%'
+  value_template: '{{ value_json.humidity }}'
+- platform: mqtt
+  state_topic: "rtl433/upstate_basement"
+  name: 'Upstate Basement Temperature'
+  unit_of_measurement: '°F'
+  value_template: '{{ value_json.temperature_F }}'
+- platform: mqtt
+  state_topic: "rtl433/upstate_basement"
+  name: 'Upstate Basement Humidity'
+  unit_of_measurement: '%'
+  value_template: '{{ value_json.humidity }}'
+- platform: mqtt
+  state_topic: "rtl433/upstate_office"
+  name: 'Upstate Office Temperature'
+  unit_of_measurement: '°F'
+  value_template: '{{ value_json.temperature_F }}'
+- platform: mqtt
+  state_topic: "rtl433/upstate_office"
+  name: 'Upstate Office Humidity'
+  unit_of_measurement: '%'
+  value_template: '{{ value_json.humidity }}'

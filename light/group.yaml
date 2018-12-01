@@ -1,0 +1,39 @@
+- platform: group
+  name: Living Room High Hats
+  entities:
+    - light.living_room_left
+    - light.living_room_right
+- platform: group
+  name: Living Room Lights
+  entities:
+    - light.living_room_left
+    - light.living_room_right
+    - light.living_room_fan_light
+- platform: group
+  name: Kitchen Lights
+  entities:
+    - light.kitchen_door_light
+    - light.kitchen_light
+- platform: group
+  name: Bedroom Lights
+  entities:
+    - light.bedroom_fan_light_2
+    - light.bedroom_mini_tracklight_left
+    - light.bedroom_mini_tracklight_right
+    - light.bedroom_tracklight_left
+    - light.bedroom_tracklight_right
+- platform: group
+  name: Bedroom Mini Tracklight
+  entities:
+    - light.bedroom_mini_tracklight_left
+    - light.bedroom_mini_tracklight_right
+- platform: group
+  name: Bedroom Tracklight
+  entities:
+    - light.bedroom_tracklight_left
+    - light.bedroom_tracklight_right
+- platform: group
+  name: Bedroom Spot Lights
+  entities:
+    - light.bedroom_spotlight_right
+    - light.bedroom_spotlight_left

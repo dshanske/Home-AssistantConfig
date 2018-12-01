@@ -1,0 +1,16 @@
+- platform: openweathermap
+  name: "Home Weather"
+  api_key: !secret openweathermap_api_key
+
+- platform: openweathermap
+  name: "Upstate Weather"
+  api_key: !secret openweathermap_api_key
+  latitude: !secret upstate_latitude
+  longitude: !secret upstate_longitude
+
+- platform: openweathermap
+  name: "Florida Weather"
+  api_key: !secret openweathermap_api_key
+  latitude: !secret florida_latitude
+  longitude: !secret florida_longitude
+

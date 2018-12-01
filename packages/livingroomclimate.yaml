@@ -1,0 +1,46 @@
+switch:
+  - platform: broadlink
+    host: 10.1.1.209
+    mac: !secret broadlink_living_room_mac
+    switches:
+      living_room_air_conditioner:
+        friendly_name: "Living Room Air Conditioner"
+        command_on: 'JgBgAAABJZQSOBITERMSExEUERQRERM5ERQSNxI4EhMRFBA5ETUVFBA5ERQRFBAVEBQRFBEUETgSExE5ETYTORI4ETgRORETEQAFaQABKEoSAAxNAAEkSxIADE0AASVLEQANBQAAAAAAAAAA'
+        command_off: 'JgBgAAABJZQSOBITERMSExEUERQRERM5ERQSNxI4EhMRFBA5ETUVFBA5ERQRFBAVEBQRFBEUETgSExE5ETYTORI4ETgRORETEQAFaQABKEoSAAxNAAEkSxIADE0AASVLEQANBQAAAAAAAAAA'
+      living_room_air_conditioner_fan_speed:
+        friendly_name: "Living Room Air Conditioner Fan Speed"
+        command_on: 'JgBgAAABJJUSOBETERQRFBEUEBQSExE5ERMSOBI4EBQRFBE5ETgRFBI4ERMRFBE5ETgSExITETgSExI4ETgSDxYTETgSOBEUEQAFagABJUsRAAxOAAEkSxIADE0AASVKEgANBQAAAAAAAAAA'
+      living_room_air_conditioner_mode:
+        friendly_name: "Living Room Air Conditioner Mode"
+        command_on: 'JgBoAAABJJUSOBETEhMRFBEUEhMRExE5EhMROBI4ERQQFBI4EjgRExE5EjgQFBE5EjgQFBITEjgRExITEjgRFBAUEjgROBITEgAFagABJUsRAAxNAAElSxEADE0AASVLEgAMTQABJEsRAA0F'
+      living_room_air_conditioner_down:
+        friendly_name: "Living Room Air Conditioner Temperature Down"
+        command_on: 'JgBoAAABJZAWOBITERQQFBEUEhMRFBE4ERQSNxI4ERQRFBA5EjgRFBAUEjgSExE4ERQRFBETETkSOBISEjgSExI3EjgSOBISEgAFagABJUsRAAxNAAElSxEADE0AASVLEgAMTAABJUsTAA0F'
+      living_room_air_conditioner_up:
+        friendly_name: "Living Room Air Conditioner Temperature Up"
+        command_on: 'JgBYAAABJZEVOBETEhMRFBEUERMSExM3ERQROBE3ExMSExI4ETgSExI4EhISOBEUEhMRExEUETkRExI4ERQROBI4ETgSOBIQEwAFawABJUsRAAxNAAElSxIADQU='
+
+sensor:
+  - platform: mqtt
+    name: "Living Room Temperature"
+    state_topic: "tele/sonoff6/SENSOR"
+    unit_of_measurement: "°F"
+    qos: 1
+    value_template: "{{ value_json.AM2301.Temperature }}"
+  - platform: mqtt
+    name: "Living Room Humidity"
+    state_topic: "tele/sonoff6/SENSOR"
+    unit_of_measurement: "%"
+    qos: 1
+    value_template: "{{ value_json.AM2301.Humidity }}"
+
+climate:
+  - platform: generic_thermostat
+    name: Living Room
+    heater: switch.living_room_air_conditioner
+    target_sensor: sensor.living_room_temperature
+    ac_mode: true
+    min_cycle_duration: 20 
+    min_temp: 65
+    max_temp: 80
+

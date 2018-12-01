@@ -1,0 +1,21 @@
+camera:
+  - platform: mjpeg
+    mjpeg_url: http://10.1.1.128:8083/axis-cgi/mjpg/video.cgi?cameraId=2025426744
+    username: !secret tinycam_user
+    password: !secret tinycam_password
+    name: 5629 Hallway
+  - platform: mjpeg
+    mjpeg_url: http://10.1.1.128:8083/axis-cgi/mjpg/video.cgi?cameraId=935597865
+    username: !secret tinycam_user
+    password: !secret tinycam_password
+    name: 5631 Garage
+  - platform: mjpeg
+    mjpeg_url: http://10.1.1.128:8083/axis-cgi/mjpg/video.cgi?cameraId=51221720
+    username: !secret tinycam_user
+    password: !secret tinycam_password
+    name: Florida 2006
+  - platform: mjpeg
+    mjpeg_url: http://10.1.1.128:8083/axis-cgi/mjpg/video.cgi?cameraId=42996213
+    username: !secret tinycam_user
+    password: !secret tinycam_password
+    name: Upstate Interior

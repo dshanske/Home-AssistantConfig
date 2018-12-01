@@ -1,0 +1,17 @@
+- alias: rtl433_upstate_basement_convert
+  trigger:
+    - platform: mqtt
+      topic: sensors/rtl_433
+  condition:
+    condition: template
+    value_template: >
+      {% if trigger.payload_json.id %}
+        {{ trigger.payload_json.id == 3136 }}
+      {% else %}
+        false
+      {% endif %}
+  action:
+    - service: mqtt.publish 
+      data_template:
+        topic: rtl433/upstate_basement
+        payload: '{ "temperature_F" : {{ trigger.payload_json.temperature_F | round(1) }}, "humidity" : {{ trigger.payload_json.humidity }}, "model" : "{{ trigger.payload_json.model }}", "battery" : {{ trigger.payload_json.battery }} }'

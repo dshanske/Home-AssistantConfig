@@ -1,0 +1,33 @@
+switch:
+  - platform: broadlink
+    host: 10.1.1.180
+    mac: !secret broadlink_bedroom_mac
+    switches:
+      bedroom_air_conditioner:
+        friendly_name: "Bedroom Air Conditioner"
+        command_on: 'JgBYAAABLpIVEhITExITNxQRFBITEhMSEzgTExI4FBESOBI5ETkSOBY1ExMSFBEUETkRFBITEhMTExI4FDcTNxEUEjgUNhQ2FAAFMAABLkkTAAxQAAErTBEADQU='
+        command_off: 'JgBYAAABLpIVEhITExITNxQRFBITEhMSEzgTExI4FBESOBI5ETkSOBY1ExMSFBEUETkRFBITEhMTExI4FDcTNxEUEjgUNhQ2FAAFMAABLkkTAAxQAAErTBEADQU='
+sensor:    
+  - platform: mqtt
+    name: "Bedroom Temperature"
+    state_topic: "tele/sonoff4/SENSOR"
+    unit_of_measurement: "°F"
+    qos: 1
+    value_template: "{{ value_json.AM2301.Temperature }}"
+  - platform: mqtt
+    name: "Bedroom Humidity"
+    state_topic: "tele/sonoff4/SENSOR"
+    unit_of_measurement: "%"
+    qos: 1
+    value_template: "{{ value_json.AM2301.Humidity }}"
+
+climate:
+  - platform: generic_thermostat
+    name: Bed Room
+    heater: switch.bedroom_air_conditioner
+    target_sensor: sensor.bedroom_temperature
+    ac_mode: true
+    min_cycle_duration: 20 
+    min_temp: 65
+    max_temp: 80
+

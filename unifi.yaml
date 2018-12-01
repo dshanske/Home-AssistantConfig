@@ -1,0 +1,8 @@
+device_tracker:
+  - platform: unifi
+    host: 10.1.1.250
+    port: 8443
+    verify_ssl: false
+    username: dshanske
+    password: !secret unifi_password
+

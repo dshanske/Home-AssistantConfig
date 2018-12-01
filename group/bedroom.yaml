@@ -1,0 +1,14 @@
+bedroom:
+  name: Bed Room
+  view: yes
+  entities:
+    - light.bedroom_fan_light
+    - light.bedroom_mini_tracklight
+    - light.bedroom_tracklight
+    - light.bedroom_spot_lights
+    - sensor.bedroom_temperature
+    - sensor.bedroom_humidity
+    - fan.bedroom_fan_2
+    - switch.bedroom_humidifier
+    - climate.bed_room
+    - media_player.lenovosmartdisplay85908

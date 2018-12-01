@@ -1,0 +1,12 @@
+- platform: mqtt
+  name: "Kitchen Temp"
+  state_topic: "tele/sonoff5/SENSOR"
+  unit_of_measurement: "°F"
+  qos: 1
+  value_template: "{{ value_json.AM2301.Temperature }}"
+- platform: mqtt
+  name: "Kitchen Humidity"
+  state_topic: "tele/sonoff5/SENSOR"
+  unit_of_measurement: "%"
+  qos: 1
+  value_template: "{{ value_json.AM2301.Humidity }}"

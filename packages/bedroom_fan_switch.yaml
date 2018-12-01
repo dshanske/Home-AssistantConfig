@@ -1,0 +1,38 @@
+fan:
+  - platform: mqtt
+    name: "Bedroom Fan"
+    state_topic: "stat/lswitch3/RESULT"
+    state_value_template: '{{ value_json["POWER"] }}'
+    command_topic: "cmnd/lswitch3/POWER"
+    availability_topic: "tele/lswitch3/LWT"
+    qos: 1
+    payload_on: "ON"
+    payload_off: "OFF"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+    retain: false
+sensor:
+  - platform: mqtt
+    name: "Bedroom Fan Switch State"
+    state_topic: "cmnd/lswitch3-1/POWER"
+    qos: 1
+    expire_after: "1"
+automation:
+  - alias:  Bedroom Fan Switch Double Tap
+    trigger:
+     - platform: state
+       entity_id: sensor.bedroom_fan_switch_state
+       to: 'TOGGLE'
+    action:
+      service: light.toggle
+      data:
+        entity_id: light.bedroom_spot_lights
+  - alias: Bedroom Fan Switch Hold
+    trigger:
+      - platform: state
+        entity_id: sensor.bedroom_fan_switch_state
+        to: 'HOLD'
+    action:
+      service: light.toggle
+      data:
+        entity_id: light.bedroom_underbesta_light

@@ -1,0 +1,8 @@
+- alias: Low Next Door Ring Battery
+  trigger: 
+    platform: template
+    value_template:  "{{ states.sensor.ring_bayside_next_door_battery | int<10 }}"
+  action:
+    service: notify.notify
+    data:
+      message: 'Next Door Battery has dropped to {{ states.sensor.ring_bayside_next_door_battery }} 

@@ -1,0 +1,117 @@
+homeassistant:
+  auth_providers:
+   - type: homeassistant
+  # Name of the location where Home Assistant is running
+  name: Home
+  # Location required to calculate the time the sun rises and sets
+  latitude: !secret home_latitude
+  longitude: !secret home_longitude
+  # Impacts weather/sunrise data (altitude above sea level in meters)
+  elevation: 0
+  # metric for Metric, imperial for Imperial
+  unit_system: imperial
+  # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+  time_zone: America/New_York
+  # Customization directory
+  customize: !include_dir_merge_named customize
+  # Packages Directory
+  packages: !include_dir_named packages
+
+# Enables the frontend
+frontend:
+  javascript_version: latest
+
+# Enables configuration UI
+config:
+
+mailgun:
+  domain: mg.n9n.us
+  api_key: !secret mailgun_key
+  sandbox: false
+
+# Enable http
+http:
+  api_password: !secret http_password
+  base_url: !secret base_url
+
+# Activate influxdb integration
+influxdb:
+  host: 10.1.1.145
+
+# Zigbee
+zha:
+  usb_path: /dev/ttyUSB1
+  database_path: !secret zigbee_db
+  device_config:
+    00:22:a3:00:00:16:d1:30-1:
+      type: 'light'
+    00:22:a3:00:00:16:a7:3f-1:
+      type: 'light'
+
+# Zwave
+zwave: 
+  usb_path: /dev/ttyUSB0
+  network_key: !secret zwave_network_key
+
+
+# Checks for available updates
+# Note: This component will send some information about your system to
+# the developers to assist with development of Home Assistant.
+# For more information, please see:
+# https://home-assistant.io/blog/2016/10/25/explaining-the-updater/
+updater:
+  # Optional, allows Home Assistant developers to focus on popular components.
+  # include_used_components: true
+
+# Discover some devices automatically
+discovery:
+
+# Allows you to issue voice commands from the frontend in enabled browsers
+conversation:
+
+# Enables support for tracking state changes over time
+history:
+
+# View all events in a logbook
+logbook: !include logbook.yaml
+
+# Enables a map showing the location of tracked devices
+map:
+
+# Track the sun
+sun:
+
+# ffmpeg:
+
+# Text to speech
+tts:
+  - platform: google
+
+# ifttt
+ifttt:
+  key: bIaOIVjnzjp5AuVPDeDrqk
+
+alexa:
+
+
+# Cloud
+# cloud:
+
+weather: !include weather.yaml
+script: !include scripts.yaml
+recorder: !include recorder.yaml
+cover: !include cover.yaml
+mqtt: !include mqtt.yaml
+media_player: !include media_player.yaml
+zone: !include zones.yaml
+logger: !include logger.yaml
+notify: !include_dir_merge_list notify
+scene: !include_dir_merge_list scene
+input_select: !include input_select.yaml
+automation: !include_dir_merge_list automation
+group: !include_dir_merge_named group
+switch: !include_dir_merge_list switches
+light: !include_dir_merge_list light
+sensor: !include_dir_merge_list sensors
+binary_sensor: !include_dir_merge_list binary_sensors
+device_tracker: !include device_tracker.yaml

@@ -1,0 +1,13 @@
+### sensors.yaml
+- platform: time_date
+  display_options:
+    - 'date_time'
+    - 'time_utc'
+
+- platform: worldclock
+  time_zone: Europe/Dublin
+  name: Dublin
+
+- platform: pocketcasts
+  username: dshansk1@gmail.com
+  password: !secret pocketcasts_password

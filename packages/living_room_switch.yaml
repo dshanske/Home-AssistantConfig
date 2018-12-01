@@ -1,0 +1,25 @@
+sensor:
+  - platform: mqtt
+    name: "Living Room Light Switch State"
+    state_topic: "cmnd/lswitch5-1/POWER"
+    qos: 1
+    expire_after: "1"
+automation:
+  - alias:  Living Room Light Light Tap
+    trigger:
+     - platform: state
+       entity_id: sensor.living_room_light_switch_state
+       to: 'TOGGLE'
+    action:
+      service: light.toggle
+      data:
+        entity_id: light.living_room_high_hats
+  - alias: Living Room Light Hold
+    trigger:
+      - platform: state
+        entity_id: sensor.living_room_light_switch_state
+        to: 'HOLD'
+    action:
+      service: light.toggle
+      data:
+        entity_id: light.living_room_lights

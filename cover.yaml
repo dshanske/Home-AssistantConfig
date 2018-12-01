@@ -1,0 +1,4 @@
+platform: myq
+username: !secret liftmaster_username
+password: !secret liftmaster_password
+type: liftmaster

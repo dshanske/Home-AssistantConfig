@@ -1,0 +1,21 @@
+- alias: 'Living Room Ambient Light On'
+  trigger:
+    - platform: state
+      entity_id: light.living_room_lights
+      to: 'off'
+  action:
+    - service: light.turn_on
+      entity_id:
+       - light.hallway_light
+       - light.6001948c57cb_1011185 
+
+- alias: 'Living Room Ambient Light Off'
+  trigger:
+    - platform: state
+      entity_id: light.living_room_lights
+      to: 'on'
+  action:
+    - service: light.turn_off
+      entity_id:
+       - light.hallway_light
+       - light.6001948c57cb_1011185 

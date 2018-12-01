@@ -1,0 +1,14 @@
+- alias: Turn on Lights on Alarm
+  initial_state: True
+  trigger:
+    platform: state
+    entity_id: binary_sensor.android_alarm
+    from: 'off'
+    to: 'on'
+  action:
+    - service: light.turn_on
+      entity_id: light.bedroom_ambient_lights
+    - service: tts.google_say
+      entity_id: media_player.ground_floor_bedroom
+      data:
+        message: "Your alarm has gone off."

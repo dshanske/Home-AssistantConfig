@@ -1,0 +1,17 @@
+db_url: !secret mysql
+purge_keep_days: 7
+purge_interval: 3
+exclude: 
+  entities:
+    - sun.sun
+    - sensor.last_boot
+    - sensor.date__time
+    - sensor.pws_alerts
+    - automation.rtl433_living_room_convert
+    - automation.rtl433_bedroom_convert
+    - automation.rtl433_kitchen_convert
+    - automation.rtl433_home_weather_convert
+    - automation.rtl433_home_weather49_convert
+    - automation.rtl433_upstate_weather_convert
+    - automation.rtl433_upstate_weather49_convert
+

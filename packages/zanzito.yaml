@@ -1,0 +1,78 @@
+device_tracker: 
+  - platform: mqtt_json
+    devices:
+      moto_x4: zanzito/shared_locations/6e2443b62df964a2
+      moto_rs: zanzito/shared_locations/1a9100b6068212f1
+binary_sensor:
+  - platform: mqtt
+    name: "David Zanzito Status"
+    state_topic: "zanzito/6e2443b62df964a2/status"
+    payload_on: "1"
+    payload_off: "0"
+    device_class: connectivity
+  - platform: template
+    sensors:
+      ds_battery_charging:
+        device_class: power
+        value_template: >-
+          {{ is_state_attr('sensor.david_cell_device_info', 'battery_charging', 'true') }}
+      ds_screen_on:
+        value_template: >-
+          {{ is_state_attr('sensor.david_cell_device_info', 'screen_on', 'true') }}
+      ds_screen_locked:
+        value_template: >-
+          {{ is_state_attr('sensor.david_cell_device_info', 'screen_locked', 'true') }}
+sensor:
+  - platform: mqtt
+    state_topic: "zanzito/6e2443b62df964a2/battery_level"
+    name: 'David Cell Phone Battery'
+    qos: 0
+    unit_of_measurement: "%"
+  - platform: mqtt
+    state_topic: "zanzito/6e2443b62df964a2/location"
+    availablity_topic: "zanzito/6e2443b62df964a2/status"
+    payload_available: "1"
+    payload_not_available: "0"
+    value_template: '{{ value_json.tst }}'
+    name: 'David Cell Location'
+    qos: 0
+    json_attributes: 
+      - battery_level
+      - longitude
+      - latitude
+      - altitude
+      - gps_accuracy
+      - tst
+  - platform: mqtt
+    ds_cell_info:
+    state_topic: "zanzito/6e2443b62df964a2/device_info"
+    value_template: '{{ value_json.device_info }}'
+    name: 'David Cell Device Info'
+    json_attributes: 
+      - time
+      - device_info
+      - charge_type
+      - battery_charging
+      - battery_level
+      - current_foreground_app
+      - screen_locked
+      - screen_on
+      - screen_orientation
+      - current_wifi
+      - current_operator
+    qos: 0 
+  - platform: mqtt
+    ds_step_counter:
+    state_topic: "zanzito/6e2443b62df964a2/step_counter"
+    value_template: '{{ value | int }}'
+    name: 'David Cell Step Counter'
+    qos: 0 
+  - platform: template
+    sensors:
+      ds_screen_orientation:
+        value_template: >-
+          {{ states.sensor.david_cell_device_info.attributes.screen_orientation }}
+      ds_charge_type:
+        value_template: >-
+          {{ states.sensor.david_cell_device_info.attributes.charge_type }}
+

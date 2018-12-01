@@ -1,0 +1,10 @@
+- platform: template
+  sensors:
+    ds_status:
+      value_template: '{{ states.input_select.ds_status_dropdown.state }}'
+      friendly_name: 'David'
+      entity_id: input_select.ds_status_dropdown
+- platform: mqtt_room
+  device_id: 0cf3ee168014
+  name: "David Beacon"
+  state_topic: 'room_presence'
