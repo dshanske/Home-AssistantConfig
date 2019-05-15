@@ -1,0 +1,12 @@
+- platform: mqtt
+  name: "Living Room Light Switch Tap"
+  state_topic: "cmnd/lswitch5-1/POWER"
+  payload_on: "TOGGLE"
+  qos: 1
+  off_delay: "1"
+- platform: mqtt
+  name: "Living Room Light Switch Hold"
+  state_topic: "cmnd/lswitch5-1/POWER"
+  payload_on: "HOLD"
+  qos: 1
+  off_delay: "1"

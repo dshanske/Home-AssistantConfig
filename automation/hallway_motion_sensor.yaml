@@ -1,0 +1,19 @@
+- alias: Hallway Motion Sensor On
+  trigger:
+    platform: state
+    entity_id: binary_sensor.hallway_motion_sensor
+    to: "On"
+  action:
+    - service: light.turn_on
+      data_template:
+        entity_id: light.hallway_light
+        brightness_pct: 40
+- alias: Hallway Motion Sensor Off
+  trigger:
+    platform: state
+    entity_id: binary_sensor.hallway_motion_sensor
+    to: "Off"
+  action:
+    - service: light.turn_off
+      entity_id: light.hallway_light
+

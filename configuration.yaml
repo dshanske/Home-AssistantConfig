@@ -31,7 +31,6 @@ mailgun:
 
 # Enable http
 http:
-  api_password: !secret http_password
   base_url: !secret base_url
 
 # Activate influxdb integration
@@ -87,16 +86,6 @@ sun:
 tts:
   - platform: google
 
-# ifttt
-ifttt:
-  key: bIaOIVjnzjp5AuVPDeDrqk
-
-alexa:
-
-
-# Cloud
-# cloud:
-
 weather: !include weather.yaml
 script: !include scripts.yaml
 recorder: !include recorder.yaml
@@ -112,6 +101,7 @@ automation: !include_dir_merge_list automation
 group: !include_dir_merge_named group
 switch: !include_dir_merge_list switches
 light: !include_dir_merge_list light
+fan: !include fan.yaml
 sensor: !include_dir_merge_list sensors
 binary_sensor: !include_dir_merge_list binary_sensors
 device_tracker: !include device_tracker.yaml

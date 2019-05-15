@@ -17,3 +17,24 @@
     - service: light.turn_off
       entity_id:
        - light.bedroom_underbesta_light
+
+- alias: 'Bedroom Spotlight Toggle'
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.bedroom_light_switch_tap
+      to: 'on'
+  action:
+    - service: light.toggle
+      entity_id:
+       - light.bedroom_spot_lights
+
+- alias: 'Bedroom Tracklights Toggle'
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.bedroom_fan_switch_tap
+      to: 'on'
+  action:
+    - service: light.toggle
+      entity_id:
+       - light.bedroom_tracklight
+

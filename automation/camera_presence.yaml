@@ -1,0 +1,19 @@
+- alias: 'Living Room Camera Off'
+  trigger:
+    - platform: state
+      entity_id: sensor.ds_status
+      to: 'Just Arrived'
+  action:
+    - service: switch.turn_off
+      entity_id:
+       - switch.living_room_camera
+
+- alias: 'Living Room Camera On'
+  trigger:
+    - platform: state
+      entity_id: sensor.ds_status
+      to: 'Just Left'
+  action:
+    - service: switch.turn_on
+      entity_id:
+       - switch.living_room_camera

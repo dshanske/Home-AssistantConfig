@@ -1,0 +1,6 @@
+- platform: template
+  sensors:
+    ground_floor_patio_door:
+      device_class: door
+      value_template: "{{ states.sensor.ground_floor_patio_door_alarm_level.state == '255' }}"
+      friendly_name: 'Ground Floor Patio Door'

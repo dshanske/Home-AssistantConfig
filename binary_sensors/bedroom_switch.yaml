@@ -1,0 +1,24 @@
+- platform: mqtt
+  name: "Bedroom Light Switch Tap"
+  state_topic: "cmnd/lswitch2-1/POWER"
+  payload_on: "TOGGLE"
+  qos: 1
+  off_delay: "1"
+- platform: mqtt
+  name: "Bedroom Light Switch Hold"
+  state_topic: "cmnd/lswitch2-1/POWER"
+  payload_on: "HOLD"
+  qos: 1
+  off_delay: "1"
+- platform: mqtt
+  name: "Bedroom Fan Switch Tap"
+  state_topic: "cmnd/lswitch3-1/POWER"
+  payload_on: "TOGGLE"
+  qos: 1
+  off_delay: "1"
+- platform: mqtt
+  name: "Bedroom Fan Switch Hold"
+  state_topic: "cmnd/lswitch3-1/POWER"
+  payload_on: "HOLD"
+  qos: 1
+  off_delay: "1"

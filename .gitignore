@@ -1,5 +1,6 @@
 *.pid
 *.xml
+!zwcfg*.xml
 *.csr
 *.crt
 *.key
